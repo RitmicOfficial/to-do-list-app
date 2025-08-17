@@ -14,3 +14,5 @@ Even though I am a beginner, this project is fully functional and can be used in
 ## Technologies
 - Python (for command-line version)
 - HTML (for web version)
+
+Open-source project — feel free to use and improve it.
