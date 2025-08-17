@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>To-Do List App</title>
   <style>
-    /* Genel stil */
+    /* General */
     body {
       font-family: 'Arial', sans-serif;
       background: #f9f9f9;
@@ -16,7 +16,7 @@
       padding-top: 50px;
     }
 
-    /* Konteyner */
+    /* Container */
     .container {
       background: white;
       padding: 30px;
@@ -62,7 +62,7 @@
       background: #005fa3;
     }
 
-    /* Liste */
+    /* List */
     ul {
       list-style-type: none;
       padding: 0;
@@ -94,7 +94,7 @@
   </div>
 
   <script>
-    // LocalStorage'dan görevleri yükle
+    // LocalStorage
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
     function renderTasks() {
@@ -124,7 +124,7 @@
       renderTasks();
     }
 
-    // İlk render
+    // Render
     renderTasks();
   </script>
 </body>
