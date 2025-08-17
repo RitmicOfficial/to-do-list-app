@@ -7,7 +7,7 @@
     body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
     input, button { padding: 10px; margin: 5px; }
     ul { list-style-type: none; padding: 0; }
-    li { padding: 5px; margin: 5px; background: #f0f0f0; display: inline-block; }
+    li { padding: 5px; margin: 5px; background: #f0f0f0; display: inline-block; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -17,18 +17,40 @@
   <ul id="taskList"></ul>
 
   <script>
+    // Load tasks from localStorage
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    function renderTasks() {
+      const list = document.getElementById('taskList');
+      list.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+        li.textContent = task;
+        li.onclick = function() {
+          removeTask(index);
+        };
+        list.appendChild(li);
+      });
+    }
+
     function addTask() {
       const input = document.getElementById('taskInput');
       const task = input.value.trim();
       if (task === '') return;
-
-      const li = document.createElement('li');
-      li.textContent = task;
-      li.onclick = function() { this.remove(); };
-      document.getElementById('taskList').appendChild(li);
-
+      tasks.push(task);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
       input.value = '';
+      renderTasks();
     }
+
+    function removeTask(index) {
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      renderTasks();
+    }
+
+    // Initial render
+    renderTasks();
   </script>
 </body>
 </html>
