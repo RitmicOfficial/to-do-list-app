@@ -13,4 +13,4 @@ Even though I am a beginner, this project is fully functional and can be used in
 
 ## Technologies
 - Python (for command-line version)
-- HTML, CSS, JavaScript (for web version)
+- HTML (for web version)
