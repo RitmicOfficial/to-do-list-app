@@ -11,4 +11,4 @@ Even though I am a beginner, this project is fully functional and can be used in
 - Remove completed tasks
 - Simple and clean interface
 
-Open-source project — feel free to use and improve it.
+Open-source project - feel free to use and improve it.
