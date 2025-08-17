@@ -1,23 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>To-Do List App</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    input, button { padding: 10px; margin: 5px; }
-    ul { list-style-type: none; padding: 0; }
-    li { padding: 5px; margin: 5px; background: #f0f0f0; display: inline-block; cursor: pointer; }
+    /* Genel stil */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding-top: 50px;
+    }
+
+    /* Konteyner */
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 400px;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo {
+      width: 60px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Input ve button */
+    input {
+      padding: 10px;
+      width: 70%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-right: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #0077cc;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #005fa3;
+    }
+
+    /* Liste */
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background: #f0f8ff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    li:hover {
+      background: #d0e7ff;
+      transform: translateX(5px);
+    }
   </style>
 </head>
 <body>
-  <h1>To-Do List App</h1>
-  <input type="text" id="taskInput" placeholder="Enter a new task">
-  <button onclick="addTask()">Add Task</button>
-  <ul id="taskList"></ul>
+  <div class="container">
+    <img src="ritmic.png" alt="Logo" class="logo">
+    <h1>To-Do List</h1>
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+  </div>
 
   <script>
-    // Load tasks from localStorage
+    // LocalStorage'dan görevleri yükle
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
     function renderTasks() {
@@ -26,9 +103,7 @@
       tasks.forEach((task, index) => {
         const li = document.createElement('li');
         li.textContent = task;
-        li.onclick = function() {
-          removeTask(index);
-        };
+        li.onclick = function() { removeTask(index); };
         list.appendChild(li);
       });
     }
@@ -36,7 +111,7 @@
     function addTask() {
       const input = document.getElementById('taskInput');
       const task = input.value.trim();
-      if (task === '') return;
+      if(task === '') return;
       tasks.push(task);
       localStorage.setItem('tasks', JSON.stringify(tasks));
       input.value = '';
@@ -49,7 +124,7 @@
       renderTasks();
     }
 
-    // Initial render
+    // İlk render
     renderTasks();
   </script>
 </body>
